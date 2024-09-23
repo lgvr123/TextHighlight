@@ -6,7 +6,7 @@ import "rmcCore.js" as Core
 
 MuseScore {
     menuPath: "Plugins.Text Highligting.Custom"
-    description: "Select and set the text highlight"
+    description: "Select and set the text highlight color"
     version: "1.0"
 
     ColorDialog {

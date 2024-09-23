@@ -4,7 +4,7 @@ import MuseScore 3.0
 import "rmcCore.js" as Core
 
 MuseScore {
-    menuPath: "Plugins.Text Highligting.Reste"
+    menuPath: "Plugins.Text Highligting.Reset"
     description: "Reset the text highlight"
     version: "1.0"
     onRun: {

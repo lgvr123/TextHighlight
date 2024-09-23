@@ -13,11 +13,12 @@ function setColour(color) {
             var element = selection.elements[i];
             if (element) {
                 console.log("element " + i + " is " + element.userName());
-                if (element.type == Element.REHEARSAL_MARK ||
-                    element.type == Element.HARMONY ||
-                    element.type == Element.SYSTEM_TEXT ||
-                    element.type == Element.STAFF_TEXT ||
-                    element.type == Element.TEMPO_TEXT) {
+                // if (element.type == Element.REHEARSAL_MARK ||
+                // element.type == Element.HARMONY ||
+                // element.type == Element.SYSTEM_TEXT ||
+                // element.type == Element.STAFF_TEXT ||
+                // element.type == Element.TEMPO_TEXT) {
+                if ((typeof element.frameType) !== "undefined") {
                     rMarks.push(element);
                 }
             }
@@ -31,9 +32,9 @@ function setColour(color) {
     }
 
     var reset = false;
-    
-    console.log("Received color is :"+(typeof color));
-    
+
+    console.log("Received color is :" + (typeof color));
+
     if (color == null) {
         console.log("No colour provided, resetting to black");
         reset = true;
@@ -52,13 +53,13 @@ function setColour(color) {
         //var bgColor = "#33"+fgColor.substring(1,7); // alt: setting the color thru the "#aarrggbb" string
 
     } else {
-        if (color.r === undefined|| color.g === undefined || color.b  === undefined || color.a  === undefined) {
+        if (color.r === undefined || color.g === undefined || color.b === undefined || color.a === undefined) {
             console.log("Invalid color object: \"" + color + "\". Expecting it .r, .g, .b, .a properties");
             JSON.stringify(color);
             return;
         }
 
-        fgColor = "#" + 
+        fgColor = "#" +
             floatToHex(color.r) +
             floatToHex(color.g) +
             floatToHex(color.b);
@@ -87,12 +88,12 @@ function setColour(color) {
 
     }
     curScore.endCmd();
-    
+
 }
 
 function floatToHex(f) {
-    var t=((f*255)|0).toString(16);
-    t=t.padStart(2, "0");
+    var t = ((f * 255) | 0).toString(16);
+    t = t.padStart(2, "0");
     return t;
 }
 
