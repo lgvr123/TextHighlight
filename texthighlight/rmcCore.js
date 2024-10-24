@@ -65,7 +65,7 @@ function setColour(color) {
             floatToHex(color.b);
     }
 
-    console.log("Applying on foreground: \"" + fgColor + "\"");
+    console.log("Applying : \"" + fgColor + "\"");
     //console.log("Applying on background: \""+bgColor +"\"");
 
 
@@ -79,8 +79,15 @@ function setColour(color) {
             e.frameWidth = 0;
             e.framePadding = 0.5
         }
-        e.color = fgColor;
-        e.color.a = 1;
+        console.log (e.color+" vs. "+e.frameFgColor)
+        var fgAligned=(e.color.b==e.frameFgColor.b && e.color.g==e.frameFgColor.g && e.color.r==e.frameFgColor.r);
+        if(fgAligned) {
+            e.color = fgColor;
+            e.color.a = 1;
+            console.log("Text and Background are aligned, applying color on text too");
+        } else 
+            console.log("Text and Background are not aligned, applying color only on background");
+        
         e.frameFgColor = fgColor;
         e.frameFgColor.a = 1;
         e.frameBgColor = fgColor;
